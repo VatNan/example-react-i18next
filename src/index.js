@@ -1,8 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { I18nextProvider } from "react-i18next";
+import App from "./App";
+import i18n from "./config/i18n";
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+ReactDOM.render(
+  <I18nextProvider i18n={i18n}>
+    <App />
+  </I18nextProvider>,
+  document.getElementById("root")
+);

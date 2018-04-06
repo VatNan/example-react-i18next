@@ -1,18 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { I18n } from 'react-i18next';
 
 class App extends Component {
+  state = {
+    lng: 'en'
+  };
+
+  editLang(lang = 'en') {
+    this.setState({
+      lng: lang,
+    })
+  }
+
   render() {
+    const { lng } =this.state;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <I18n>
+          {t => (
+            <div>
+              <h2>{t('age.label', { lng })}</h2>
+              <h2>{t('home.label', { lng })}</h2>
+              <h2>{t('name.label', { lng })}</h2>
+            </div>
+          )}
+        </I18n>
+        <button onClick={() => { this.editLang() }}>
+          To EN
+        </button>
+        <br />
+        <button onClick={() => { this.editLang('th') }}>
+          To TH
+        </button>
       </div>
     );
   }
